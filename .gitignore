@@ -7,6 +7,3 @@ build/
 #Python file
 *.py
 *.pyc
-
-#test dir
-test/

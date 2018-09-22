@@ -15,14 +15,16 @@
 //! Default Constructor
 Pid_controller::Pid_controller(void) : delta_time(0.001), clipper_max_value(10),
                                        Kp(0), Ki(0), Kd(0),
-                                       total_error(0), current_state(0) {
+                                       current_state(0), total_error(0),
+                                       p_error(0) {
 }
 
 //! Constructor overloads with PID Controller constants value as parameters
 Pid_controller::Pid_controller(float kp, float kd, float ki) :
-                                    delta_time(0.001), clipper_max_value(10),
-                                    total_error(0), Kp(kp),
-                                    Kd(kp), Ki(ki), current_state(0) {
+                                            delta_time(0.001),
+                                            clipper_max_value(10),
+                                            Kp(kp), Ki(kp), Kd(ki),
+                                            current_state(0), total_error(0) {
 }
 
 float Pid_controller::compute_step(float final_value) {
