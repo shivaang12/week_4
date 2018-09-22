@@ -8,36 +8,84 @@
  * @brief An implemention of PID controller class definition 
  *        for a group assignment ENPM 808X Assignment
  * 
- **/
+ */
 
 #include <pidController.hpp>
 
 //! Default Constructor
 Pid_controller::Pid_controller(void) : delta_time(0.001), clipper_max_value(10),
-                                       Kp(0), Ki(0), Kd(0), start_state(0),
+                                       Kp(0), Ki(0), Kd(0),
                                        total_error(0), current_state(0) {
 }
 
 //! Constructor overloads with PID Controller constants value as parameters
 Pid_controller::Pid_controller(float kp, float kd, float ki) :
                                     delta_time(0.001), clipper_max_value(10),
-                                    start_state(0), total_error(0), Kp(kp),
+                                    total_error(0), Kp(kp),
                                     Kd(kp), Ki(ki), current_state(0) {
 }
 
 float Pid_controller::compute_step(float final_value) {
-    //! TODO(SHIVANG):Compute PID CONTROLLER logic Here
+    /**
+     * TODO:Compute PID CONTROLLER logic Here
+     * 
+     * Calculate error by Final_value - current_state
+     *  error = Final_value - current_state
+     * 
+     * use the obtain error in order to calculate P, I, D values 
+     * use p_error var for storing previous error value of D term
+     *  p_term = error * Kp
+     * 
+     *  total_error += error
+     * 
+     * use total error var for I term update it in every call
+     * e.g. total_error += error
+     *  i_term = total_error * Ki * delta_time
+     * 
+     *  d_term = (error - p_error) * (Kd / delta_time)
+     * 
+     * 
+     * Compute total value by adding P, I, D and pass through clipper method
+     * so to prevent overshoot by pre setting overshoot
+     * 
+     *  output_value = p_term + i_term + d_term
+     * 
+     * return clipper_max_value(output_value)
+     * 
+     */
+
     return 0;
 }
 
 void Pid_controller::compute(float final_value, float actual_velocity) {
-    //! TODO:This compute method updates the state(velocity) and calls
-    //  compute_step method untill the the error is below
-    //  the threshold value and the actual_velocity is
-    //  the same as current_state make sure to assign it
+    /**
+     * TODO
+     * Assign actual_velocity to current_state
+     * 
+     * Start with inizialing count variable to 0.
+     * Add while loop with condition of abs(error) > 0.0001 or count < 10000
+     *      inside loop:
+     *      call compute_step method
+     *          output_value = compute_step(final_value)
+     *      Add this to current_state
+     *          current_state += ouput_value
+     *      increment the counter
+     *          ++counter
+     * 
+     */
+}
+
+float Pid_controller::clipper(float final_value) {
+    /**
+     * TODO:
+     * Return final_value if final_value < clipper_max_value
+     * else return clipper_max_value
+     */
+
+    return 0;
 }
 
 float Pid_controller::get_current_state(void) {
-    //! TODO:Use this method to fetch value of current_state
+    //! TODO:Use this method to fetch (getter method) value of current_state
     return 0;
 }

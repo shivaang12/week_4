@@ -8,7 +8,7 @@
  * @brief main file implemention of PID controller project for a group assignment
  *        ENPM 808X Assignment
  * 
- **/
+ */
 
 #include <lib.hpp>
 

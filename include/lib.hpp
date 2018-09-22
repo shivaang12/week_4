@@ -8,7 +8,7 @@
  * @brief Header file main file for implemention of PID controller project 
  *        for a group assignment ENPM 808X Assignment
  * 
- **/
+ */
 
 #pragma once
 #include <pidController.hpp>
