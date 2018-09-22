@@ -1,0 +1,9 @@
+#vscode folder
+.vscode/
+
+#build dir
+build/
+
+#Python file
+*.py
+*.pyc
