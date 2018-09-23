@@ -58,7 +58,7 @@ void Pid_controller::compute(float final_value, float actual_velocity) {
 
   current_state_ = actual_velocity;
   int count = 0;
-  while (count < 10000 && abs(p_error_) > 0.0001) {
+  while (count < 10000 || abs(p_error_) > 0.0001) {
     current_state_ = compute_step(final_value);
     ++count;
   }
