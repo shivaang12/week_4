@@ -30,10 +30,11 @@ Pid_controller::Pid_controller(float kp, float kd, float ki)
     : delta_time_(0.001),
       clipper_max_value_(10),
       Kp_(kp),
-      Ki_(kp),
-      Kd_(ki),
+      Ki_(ki),
+      Kd_(kd),
       current_state_(0),
-      total_error_(0) {
+      total_error_(0),
+      p_error_(0){
 }
 
 float Pid_controller::compute_step(float final_value) {
@@ -69,7 +70,7 @@ float Pid_controller::compute_step(float final_value) {
   }
 
   auto error = final_value - current_state_;
-  total_error_ = total_error_ * error * delta_time_;
+  total_error_ = total_error_ + error * delta_time_;
   auto derivative = (error - p_error_) / delta_time_;
   current_state_ = error * Kp_ + total_error_ * Ki_ + derivative * Kd_;
   p_error_ = error;
@@ -99,7 +100,7 @@ void Pid_controller::compute(float final_value, float actual_velocity) {
 
   current_state_ = actual_velocity;
   int count = 0;
-  while (count < 1000) {
+  while (count < 10000 && abs(p_error_) > 0.0001 ) {
     current_state_ = compute_step(final_value);
     ++count;
   }
