@@ -5,5 +5,5 @@
 build/
 
 #Python file
-*.py
-*.pyc
+# *.py
+# *.pyc
