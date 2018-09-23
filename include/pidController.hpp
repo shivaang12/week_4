@@ -1,8 +1,8 @@
-// Copyright 2018 Shivang Patel
+// Copyright 2018 Shivang Patel and Royneel Rayess 
 
 /**
  * @file pidController.hpp
- * @author Shivang Patel
+ * @author Shivang Patel, Royneel Rayess
  * @version 1.0
  * 
  * @brief An implemention of PID controller class for a group assignment
@@ -67,12 +67,12 @@ class Pid_controller {
     float get_current_state(void);
 
  private:
-    const float delta_time;
-    const float clipper_max_value;
-    float Kp;
-    float Ki;
-    float Kd;
-    float current_state;
-    float total_error;
-    float p_error;
+    const float delta_time_;
+    const float clipper_max_value_;
+    float Kp_;
+    float Ki_;
+    float Kd_;
+    float current_state_;
+    float total_error_;
+    float p_error_;
 };

@@ -1,8 +1,8 @@
-// Copyright 2018 Shivang Patel
+// Copyright 2018 Shivang Patel and Royneel Rayess
 
 /**
  * @file lib.hpp
- * @author Shivang Patel
+ * @author Shivang Patel, Royneel Rayess
  * @version 1.0
  * 
  * @brief Header file main file for implemention of PID controller project 

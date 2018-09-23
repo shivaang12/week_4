@@ -1,8 +1,8 @@
-// Copyright 2018 Shivang Patel
+// Copyright 2018 Shivang Patel and Royneel Rayess
 
 /**
  * @file pidController.cpp
- * @author Shivang Patel
+ * @author Shivang Patel, Royneel Rayess
  * @version 1.0
  * 
  * @brief An implemention of PID controller class definition 
@@ -13,18 +13,18 @@
 #include <pidController.hpp>
 
 //! Default Constructor
-Pid_controller::Pid_controller(void) : delta_time(0.001), clipper_max_value(10),
-                                       Kp(0), Ki(0), Kd(0),
-                                       current_state(0), total_error(0),
-                                       p_error(0) {
+Pid_controller::Pid_controller(void) : delta_time_(0.001), clipper_max_value_(10),
+                                       Kp_(0), Ki_(0), Kd_(0),
+                                       current_state_(0), total_error_(0),
+                                       p_error_(0) {
 }
 
 //! Constructor overloads with PID Controller constants value as parameters
 Pid_controller::Pid_controller(float kp, float kd, float ki) :
-                                            delta_time(0.001),
-                                            clipper_max_value(10),
-                                            Kp(kp), Ki(kp), Kd(ki),
-                                            current_state(0), total_error(0) {
+                                            delta_time_(0.001),
+                                            clipper_max_value_(10),
+                                            Kp_(kp), Ki_(kp), Kd_(ki),
+                                            current_state_(0), total_error_(0) {
 }
 
 float Pid_controller::compute_step(float final_value) {
