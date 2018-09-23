@@ -55,8 +55,13 @@ float Pid_controller::compute_step(float final_value) {
      * return clipper_max_value(output_value)
      * 
      */
+    auto error = final_value - current_state_;
+    total_error_ = total_error_ * error * delta_time_;
+    auto derivative = (error - p_error_) / delta_time_;
+    current_state_ = error * Kp_ + total_error_ * Ki_ + derivative * Kd_;
+    p_error_ = error;
 
-    return 0;
+    return current_state_;
 }
 
 void Pid_controller::compute(float final_value, float actual_velocity) {
@@ -75,19 +80,20 @@ void Pid_controller::compute(float final_value, float actual_velocity) {
      *          ++counter
      * 
      */
+  current_state_ = actual_velocity;
+  int count = 0;
+  while(count < 1000)
+  {
+    current_state_ = compute_step(final_value);
+    ++count;
+  }
 }
 
 float Pid_controller::clipper(float final_value) {
-    /**
-     * TODO:
-     * Return final_value if final_value < clipper_max_value
-     * else return clipper_max_value
-     */
-
-    return 0;
+    return final_value  > clipper_max_value_ ? clipper_max_value_ : final_value;
 }
 
 float Pid_controller::get_current_state(void) {
-    //! TODO:Use this method to fetch (getter method) value of current_state
-    return 0;
+
+    return current_state_;
 }
