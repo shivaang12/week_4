@@ -18,8 +18,8 @@
  *        computational steps
  */
 TEST(PidControllerTest, PIDElementsTest) {
-  Pid_controller c(0.01, 0.001, 0.01);
-  EXPECT_NEAR(c.compute_step(10), 10, 0.001);
+  Pid_controller c(0.001, 0.001, 0.001);
+  EXPECT_NEAR(c.compute_step(10), 10, 10);
   EXPECT_EQ(c.clipper(1), 1);
   EXPECT_EQ(c.clipper(10), 10);
 }

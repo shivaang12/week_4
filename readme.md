@@ -7,6 +7,10 @@
 1. Implement compute_step method for PID Controller.
 2. Implement compute method which calls compute_step method and update state.
 
+## Roles
+
+Shivang - Driver
+Royneel - Navigator
 
 ## Overview
 
