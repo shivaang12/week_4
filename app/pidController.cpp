@@ -69,6 +69,5 @@ float Pid_controller::clipper(float final_value) {
 }
 
 float Pid_controller::get_current_state(void) {
-
   return current_state_;
 }
