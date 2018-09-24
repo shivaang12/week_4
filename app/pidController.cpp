@@ -21,7 +21,7 @@ Pid_controller::Pid_controller(void) : delta_time_(0.001), clipper_max_value_(10
 
 //! Constructor overloads with PID Controller constants value as parameters
 Pid_controller::Pid_controller(float kp, float kd, float ki) :
-                                            delta_time_(0.001),
+                                            delta_time_(0.1),
                                             clipper_max_value_(10),
                                             Kp_(kp), Ki_(ki), Kd_(kd),
                                             current_state_(0), total_error_(0) {
