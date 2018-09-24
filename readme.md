@@ -12,6 +12,19 @@
 Shivang - Driver
 Royneel - Navigator
 
+Part 2: Robert Dumont (Solo)
+
+## Discussion Comments
+The hardest part of getting the test to pass had more to do with Control Theory then programming.  The PID constants as originally given were unstable for the given test case.  This made it impossible to pass the test case with a valid implementation that did not exploit knowledge of the limited test cases.
+
+Additionally, nowhere in the UML diagrams of the documentation for the class nor in the header file was it mentioned that certain methods were expected to throw exceptions for invalid input.  The only way to determine this was by looking at the test case failure.  
+
+The default constructor in the initial design seems useless as it creates a controller with all zero constants and does not provide any setter functions to modify the state of the class. It's unclear what the purpose of the output clipping is supposed to serve as it is independent of the PID calculation. 
+
+One change I would make to the original design would be to make the time delta configurable so the PIDController can be used a different rates or even dynamic rates if the sampling is not periodic.  Additional tests that could be added would a test for a large change in the set_point value as well as a small change to complement the existing test that have more moderate changes or no change.  
+
+The biggest change I would make to the test cases is to choose a different set of parameters that creates a stable control loop and reduce the accpetable range of the result.  Currently it accepts such a wide range the set point may not be hit and the test will still pass
+
 ## Overview
 
 Simple starter C++ project with:
