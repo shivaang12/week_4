@@ -23,7 +23,7 @@ Pid_controller::Pid_controller(void) : delta_time_(0.001), clipper_max_value_(10
 Pid_controller::Pid_controller(float kp, float kd, float ki) :
                                             delta_time_(0.001),
                                             clipper_max_value_(10),
-                                            Kp_(kp), Ki_(kp), Kd_(ki),
+                                            Kp_(kp), Ki_(ki), Kd_(kd),
                                             current_state_(0), total_error_(0) {
 }
 
