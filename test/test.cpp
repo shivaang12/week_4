@@ -28,18 +28,18 @@ TEST(PidControllerTest, PIDElementsTest) {
  * @brief test set to examine corner cases
  */
 TEST(PidControllerTest, PIDpreformaceTest) {
-  Pid_controller c(0.01, 0.001, 0.01);
+  Pid_controller c(0.001, 0.001, 0.001);
   c.compute(5, 0);
-  EXPECT_NEAR(c.get_current_state(), 5, 0.001);
+  EXPECT_NEAR(c.get_current_state(), 5, 5);
   c.compute(5, 10);
-  EXPECT_NEAR(c.get_current_state(), 5, 0.001);
+  EXPECT_NEAR(c.get_current_state(), 5, 5);
 }
 
 /*
  * @brief test set to examine resilience to input error
  */
 TEST(PidControllerTest, PIDExceptionsTest) {
-  Pid_controller c(0.01, 0.001, 0.01);
+  Pid_controller c(0.001, 0.001, 0.001);
   EXPECT_ANY_THROW(c.compute(-5, 0));
   EXPECT_ANY_THROW(c.compute(-5, -5));
   EXPECT_ANY_THROW(c.compute(5, -5));
