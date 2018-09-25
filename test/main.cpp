@@ -1,3 +1,13 @@
+/*
+ * @copyright 2018 Royneal Rayess , Shivang Patel
+ * @file main.cpp
+ * @auther Royneal
+ * @ver1.0.0.0
+ *
+ * @brief main file for tests
+ *
+ */
+
 #include <gtest/gtest.h>
 
 
